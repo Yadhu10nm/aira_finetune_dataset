@@ -1,0 +1,25 @@
+# PyTorch with CUDA 12.6 support (install via: pip install torch --index-url https://download.pytorch.org/whl/cu126)
+torch>=2.4.0
+
+# Hugging Face Core Libraries (Transformers 4.50+ is required for Gemma 3 architecture)
+transformers>=4.50.0
+tokenizers>=0.20.0
+huggingface-hub>=0.25.0
+accelerate>=0.34.0
+datasets>=3.0.0
+trl>=0.12.0
+
+# Fine-Tuning & Quantization
+peft>=0.13.0
+bitsandbytes>=0.44.0
+scipy>=1.13.0
+
+# Terminal UI & Formatting
+rich>=13.8.0
+pyyaml>=6.0.2
+
+# Performance & Utilities
+safetensors>=0.4.5
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+psutil>=5.9.0

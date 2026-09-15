@@ -1,0 +1,25 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Model checkpoints and weights
+outputs/
+models/ollama/*.gguf
+models/base_hf/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

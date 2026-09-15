@@ -1,0 +1,7 @@
+{
+  "model_name": "gemma3:4b",
+  "gguf_filename": "gemma3-4b-q4_k_m.gguf",
+  "gguf_size_bytes": 3338792448,
+  "gguf_size_gb": 3.11,
+  "local_path": "c:\\\\aira_dataset\\\\models\\\\ollama\\\\gemma3-4b-q4_k_m.gguf"
+}

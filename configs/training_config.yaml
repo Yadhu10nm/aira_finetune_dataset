@@ -1,0 +1,67 @@
+# Configuration for Gemma 3 (4B) QLoRA Fine-Tuning
+# Optimized for NVIDIA GeForce RTX 3050 (6 GB VRAM)
+
+model:
+  # Hugging Face model identifier or local directory path
+  base_model_id: "unsloth/gemma-3-4b-it-bnb-4bit"
+  # Ollama tag to pull/export
+  ollama_model_name: "gemma3:4b"
+  # Local destination for downloaded Ollama GGUF
+  ollama_export_dir: "models/ollama"
+  # Local directory if storing HF weights locally
+  local_hf_dir: "models/base_hf"
+  # Device configuration
+  device_map: "auto"
+  trust_remote_code: true
+
+quantization:
+  # QLoRA 4-bit NormalFloat setup
+  load_in_4bit: true
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+  bnb_4bit_compute_dtype: "bfloat16"
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+data:
+  dataset_path: "datasets/main.json"
+  max_seq_length: 1024
+  validation_split: 0.05
+  seed: 42
+
+training:
+  output_dir: "outputs/aira_lora"
+  checkpoint_dir: "outputs/checkpoints"
+  num_train_epochs: 3
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  logging_steps: 5
+  save_steps: 100
+  save_total_limit: 3
+  gradient_checkpointing: true
+  optim: "paged_adamw_8bit"
+  bf16: true
+  fp16: false
+
+ui:
+  refresh_rate_hz: 4
+  show_gpu_memory: true
+  show_loss_graph: true
+  sample_generation_on_checkpoint: true
